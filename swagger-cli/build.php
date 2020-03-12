@@ -17,12 +17,13 @@ if(empty($swaggerFileName)) {
 
 $cloudName = getDataVal($options, 'c', getDataVal($options, 'cloudname'));
 if(empty($cloudName)) {
-    $cloudName = 'order';
-}
-
-$moduleName = getDataVal($options, 'm', getDataVal($options, 'modulename'));
-if(empty($moduleName)) {
+    $cloudName = '';
     $moduleName = '';
+}else{
+    $moduleName = getDataVal($options, 'm', getDataVal($options, 'modulename'));
+    if(empty($moduleName)) {
+        $moduleName = '';
+    }
 }
 
 $iniFile = __DIR__ . '/' . $swaggerFileName;
@@ -35,7 +36,10 @@ $scanDir = (isset($swaggerIniData['scandir']) && $swaggerIniData['scandir'])?$sw
 if(!$scanDir) {
     exit('scan dir can not empty' . PHP_EOL);
 }
-$realPath = '/app/'. ucfirst($cloudName) .'/'. ucfirst($moduleName). 'Controllers/';
+
+$tmp1 = empty($cloudName) ? '' : ucfirst($cloudName) .'/';
+$tmp2 = empty($moduleName) ? '' : (ucfirst($moduleName). 'Controllers/');
+$realPath = '/app/'. $tmp1 . $tmp2;
 $scanDir .= $realPath;
 if(!is_dir($scanDir)) {
     exit($realPath . ' not exists' . PHP_EOL);
