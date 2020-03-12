@@ -4,6 +4,6 @@
 scandir=../swaggerdemo/app/
 
 #生成后的swagger.yml文件保存位置，扩展名一定要是.yml
-dist=
+#dist=
 
 
