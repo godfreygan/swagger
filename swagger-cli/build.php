@@ -33,9 +33,14 @@ $swaggerIniData = parse_ini_file($iniFile);
 //代码扫描目录
 $scanDir = (isset($swaggerIniData['scandir']) && $swaggerIniData['scandir'])?$swaggerIniData['scandir']:__DIR__ . '/app';
 if(!$scanDir) {
-    exit('scan dir not exists' . PHP_EOL);
+    exit('scan dir can not empty' . PHP_EOL);
 }
-$scanDir .= '/app/'. ucfirst($cloudName) .'/'. ucfirst($moduleName). 'Controllers/';
+$realPath = '/app/'. ucfirst($cloudName) .'/'. ucfirst($moduleName). 'Controllers/';
+$scanDir .= $realPath;
+if(!is_dir($scanDir)) {
+    exit($realPath . ' not exists' . PHP_EOL);
+}
+
 $fileName = explode('.', $swaggerFileName);
 $distFile = (isset($fileName[0]) && $fileName[0])?$fileName[0]:'swagger';
 if(empty($moduleName)){
