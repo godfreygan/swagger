@@ -2,7 +2,7 @@
 /**
  * 执行格式：php build.php -f 模板文件名 -c 项目模块 -m 接口模块
  * 执行示例：
- * php /data1/towngas/ganqixin/swagger/swagger-cli/build.php -f order-service.ini -c order -m api
+ * php build.php -f order-service.ini -c order -m api
  *
  */
 require(__DIR__ . "/vendor/autoload.php");

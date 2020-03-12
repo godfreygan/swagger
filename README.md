@@ -14,3 +14,4 @@ order-service_order_manage.yml
 
 5） 配置站点，指向 swagger/swagger-ui 。具体配置不做赘述。
 
+6） 浏览器访问刚才配置的域名，如：localhost.swagger.com。浏览器默认打开 order-service_order.yml，如果想修改成默认 yml文件，修改 swagger/swagger-ui/index.html 中91行左右的地方，把 'order-service_order.yml' 改为你的想要的默认页，刷新页面即可。

@@ -1,8 +1,8 @@
 <?php
 /**
- * 请求格式：http://swagger.ganqixin.dev.tgs.com/build.php?f=yml文件
+ * 请求格式：http://localhost.swagger.com/build.php?f=yml文件
  * 请求示例：（yml文件名格式：按_分隔，第一个参数是 swagger的ini文件，第二个是项目模块，第三个是控制器模块）
- * http://swagger.ganqixin.dev.gas.com/build.php?f=order-service_order_manage.yml
+ * http://localhost.swagger.com/build.php?f=order-service_order_manage.yml
  *
  */
 $path = __DIR__ . "/../swagger-cli/";

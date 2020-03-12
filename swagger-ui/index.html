@@ -45,7 +45,7 @@
 
       .build-btn {
         display: inline-block;
-        position: fixed;
+        position: absolute;
         top: 70px;
         right: 10px;
       }
@@ -63,6 +63,9 @@
         background-color: #49cc90;
         cursor: pointer;
       }
+      #btn-build:hover{
+        background-color: #3dab78;
+      }
       
     </style>
   </head>
@@ -79,7 +82,14 @@
     <script>
     window.onload = function() {
       // Begin Swagger UI call region
-      var swaggerApiUrl = getUrlParam4Cjs('f')?getUrlParam4Cjs('f'):'order-service_order.yml';
+      var reg = new RegExp("(^|&)f=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      var swaggerApiUrl = '';
+      if (r != null) {
+        swaggerApiUrl = unescape(r[2]);
+      } else {
+        swaggerApiUrl = 'order-service_order.yml';
+      }
       const ui = SwaggerUIBundle({
         url: swaggerApiUrl,
         dom_id: '#swagger-ui',
@@ -98,17 +108,6 @@
       window.ui = ui
       
     };
-
-    function getUrlParam4Cjs(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
-    }
-
-    function getId(id) {
-      return document.getElementById(id);
-    }
 
     function build() {
       var filename = document.getElementsByClassName('download-url-input')[0].value;
