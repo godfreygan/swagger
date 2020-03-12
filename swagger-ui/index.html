@@ -1,0 +1,131 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+      
+      /* add by jelly */
+      .click-button{
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 80px;
+        padding: 6px 15px;
+        text-align: center;
+        border-radius: 3px;
+        border: none;
+        text-shadow: 0 1px 0 rgba(0,0,0,.1);
+        font-family: sans-serif;
+        color: #fff;
+        background-color: #49cc90;
+      }
+
+      .build-btn {
+        display: inline-block;
+        position: fixed;
+        top: 70px;
+        right: 10px;
+      }
+      #btn-build {
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 80px;
+        padding: 6px 15px;
+        text-align: center;
+        border-radius: 3px;
+        border: none;
+        text-shadow: 0 1px 0 rgba(0,0,0,.1);
+        font-family: sans-serif;
+        color: #fff;
+        background-color: #49cc90;
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="build-btn">
+      <button id="btn-build" onclick="build()" title="点我重构">Rebuild</button>
+    </div>
+    <div id="swagger-ui"></div>
+
+
+    <script src="./swagger-ui-bundle.js"> </script>
+    <script src="./swagger-ui-standalone-preset.js"> </script>
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      var swaggerApiUrl = getUrlParam4Cjs('f')?getUrlParam4Cjs('f'):'order-service_order.yml';
+      const ui = SwaggerUIBundle({
+        url: swaggerApiUrl,
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+      // End Swagger UI call region
+
+      window.ui = ui
+      
+    };
+
+    function getUrlParam4Cjs(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function getId(id) {
+      return document.getElementById(id);
+    }
+
+    function build() {
+      var filename = document.getElementsByClassName('download-url-input')[0].value;
+      var url = '/build.php?f=' + filename;
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open('GET', url, true);
+      httpRequest.send();
+      httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+          var json = JSON.parse(httpRequest.responseText);
+          alert(json.msg);
+          if(json.code == 0){
+            window.location.href = '/?f=' + filename;
+          }
+        }
+      };
+    }
+  </script>
+  </body>
+</html>

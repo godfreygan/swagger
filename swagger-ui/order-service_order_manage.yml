@@ -1,0 +1,844 @@
+openapi: 3.0.0
+info:
+  title: 名气家-订单后台API接口
+  description: "订单后台接口\n\n "
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: jelly
+    url: 'http://nfangbian.com'
+    email: jinsheng.cheng@handeson.com
+  version: 1.0.0
+servers:
+  -
+    url: 'http://manage.chengjinsheng.dev.tgs.com/'
+    description: 程金盛-jelly-dev联调地址
+  -
+    url: 'http://manage.liuzan.dev.tgs.com/'
+    description: 刘赞-Chad-dev联调地址
+  -
+    url: 'http://manage.raoyanpan.dev.tgs.com/'
+    description: 饶焱盼-dev-联调地址
+  -
+    url: 'http://manage.kezunlin.dev.tgs.com/'
+    description: 柯尊林-Linko-dev联调地址
+  -
+    url: 'http://manage.yantingyue.dev.tgs.com/'
+    description: 颜廷跃-Linko-dev联调地址
+  -
+    url: 'http://manage.zhangxiaolong.dev.tgs.com/'
+    description: 张孝龙-dev联调地址
+  -
+    url: 'http://manage.chengyongjia.dev.tgs.com/'
+    description: 成永佳-Dash-dev联调地址
+  -
+    url: 'http://manage.ganqixin.dev.tgs.com/'
+    description: 甘其信-Godfrey-dev联调地址
+  -
+    url: 'http://manage.yujian.dev.tgs.com/'
+    description: 于建-yuki-dev联调地址
+  -
+    url: 'http://manage.zhangyuliang.dev.tgs.com/'
+    description: 张玉亮-zhangyuliang-dev联调地址
+  -
+    url: 'http://manage.liuaijun.dev.tgs.com/'
+    description: 刘爱军-liuaijun-dev联调地址
+  -
+    url: 'http://manage.wangzhao.dev.tgs.com/'
+    description: 王昭-Kylin-dev联调地址
+  -
+    url: 'http://manage.luweijie.dev.tgs.com/'
+    description: 陆伟杰-Roger-dev联调地址
+paths:
+  /api/proxy/order/config/express/add:
+    post:
+      tags:
+        - config
+      summary: 新增配送商
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_add
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_addrequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+  /api/proxy/order/config/express/edit:
+    post:
+      tags:
+        - config
+      summary: 编辑配送商
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_edit
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_editrequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+  /api/proxy/order/config/express/delete:
+    post:
+      tags:
+        - config
+      summary: 删除配送商
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_delete
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_deleterequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+  /api/proxy/order/config/express/setStatus:
+    post:
+      tags:
+        - config
+      summary: 启用/禁用配送商
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_setstatus
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_setstatusrequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+  /api/proxy/order/config/express/getList:
+    post:
+      tags:
+        - config
+      summary: 配送商列表
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_getList
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_getlistrequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+                  - { properties: { data: { $ref: '#components/schemas/apidatalist' } }, type: object }
+                  - { properties: { data: { $ref: '#components/schemas/config_express_getlistresponse' } }, type: object }
+  /api/proxy/order/config/express/info:
+    post:
+      tags:
+        - config
+      summary: 配送商详情
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: config_express_info
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/config_express_inforequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+                  - { properties: { data: { $ref: '#components/schemas/config_express_inforesponse' } }, type: object }
+  /api/proxy/order/config/supplier/getConfigList:
+    post:
+      tags:
+        - manage
+      summary: ''
+      description: "\n     * 开发者：刘爱军 <emrys.liu@handeson.com>\n     * 功能：供应商发货预警配置列表 "
+      operationId: api_proxy_config_supplier_getConfigList
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  description: 页数
+                  type: integer
+                page_size:
+                  description: 每页显示数据量
+                  type: integer
+                supplier_code:
+                  description: 供应商名称
+                  type: string
+                supplier_name:
+                  description: 供应商编码
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { properties: { code: { description: 错误码, type: integer, default: '0' }, msg: { description: 提示, type: string, default: sucess }, data: { type: object, $ref: '#/components/schemas/api_proxy_config_supplier_getConfigList_response' } }, type: object }
+  /api/proxy/order/config/supplier/addConfigInfo:
+    post:
+      tags:
+        - manage
+      summary: ''
+      description: "\n     * 开发者：刘爱军 <emrys.liu@handeson.com>\n     * 功能：新增配置信息 "
+      operationId: api_proxy_config_supplier_addConfigInfo
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/api_proxy_config_supplier_info'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { properties: { code: { description: 错误码, type: integer, default: '0' }, msg: { description: 提示, type: string, default: sucess }, data: { description: 等于0保存失败，非零插入数据的ID, type: integer, default: '0' } }, type: object }
+  /api/proxy/order/config/supplier/modifyConfigInfo:
+    post:
+      tags:
+        - manage
+      summary: ''
+      description: "\n     * 开发者：刘爱军 <emrys.liu@handeson.com>\n     * 功能：更新配置信息 "
+      operationId: api_proxy_config_supplier_modifyConfigInfo
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              property: id
+              description: 配置ID
+              type: integer
+            $ref: '#/components/schemas/api_proxy_config_supplier_info'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { properties: { code: { description: 错误码, type: integer, default: '0' }, msg: { description: 提示, type: string, default: sucess }, data: { description: 等于0保存失败，非零插入数据的ID, type: integer, default: '0' } }, type: object }
+  /api/proxy/order/notfound/index:
+    get:
+      tags:
+        - other
+      summary: 404接口地址返回
+      description: "\n      找不到的接口地址统一返回 "
+      operationId: api_proxy_order_notfound_index
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { properties: { code: { description: 错误码, type: integer, default: '404' }, msg: { description: 错误提示, type: string, default: 页面不存在 }, data: { description: '404 地址', type: object } }, type: object }
+  /api/proxy/order/order/edit/confirmsign:
+    post:
+      tags:
+        - order
+      summary: 确认收货
+      description: "\n    开发者： 甘其信\n    邮箱： godfrey.gan@handeson.com\n    备注："
+      operationId: order_edit_confirmsign
+      parameters:
+        -
+          name: X-FROM-SERVICE
+          in: header
+          required: true
+          schema:
+            type: string
+          example: manage-api
+        -
+          name: X-USERID
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '7000001'
+        -
+          name: X-TRACE-ID
+          in: header
+          required: false
+          schema:
+            type: string
+          example: ''
+        -
+          name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          example: ''
+      requestBody:
+        description: 'Input data format'
+        content:
+          application/json:
+            schema:
+              allOf:
+                -
+                  $ref: '#/components/schemas/order_edit_confirmsignrequest'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - { $ref: '#/components/schemas/apiprotocol' }
+components:
+  schemas:
+    config_express_addrequest:
+      required:
+        - site_id
+        - express_company_no
+        - company_name
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 快递公司编号
+          type: string
+        company_name:
+          description: 快递公司名称
+          type: string
+          example: '0'
+        company_url:
+          description: 快递公司url
+          type: string
+          example: '0'
+        phone:
+          description: 联系电话
+          type: string
+          default: '0'
+        status:
+          description: 启用状态：0-禁用，1-启用
+          type: integer
+          default: '0'
+        rank:
+          description: 权重排序，越小越优先
+          type: integer
+          default: '999'
+      type: object
+    config_express_editrequest:
+      required:
+        - site_id
+        - express_company_no
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 配送商编号
+          type: string
+          example: YTO
+        company_name:
+          description: 快递公司名称
+          type: string
+          example: '0'
+        company_url:
+          description: 快递公司url
+          type: string
+          example: '0'
+        phone:
+          description: 联系电话
+          type: string
+          default: '0'
+        status:
+          description: 启用状态：0-禁用，1-启用
+          type: integer
+          default: '0'
+        rank:
+          description: 权重排序，越小越优先
+          type: integer
+          default: '999'
+      type: object
+    config_express_deleterequest:
+      required:
+        - site_id
+        - express_company_no
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 配送商编号
+          type: string
+      type: object
+    config_express_setstatusrequest:
+      required:
+        - site_id
+        - express_company_no
+        - status
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 配送商编号
+          type: string
+        status:
+          description: 状态：0-禁用，1-启用
+          type: integer
+          example: '1'
+      type: object
+    config_express_getlistrequest:
+      required: []
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 快递公司编号，数组（多个）
+          type: array
+          items:
+            type: string
+        company_name:
+          description: 快递公司名称
+          type: string
+          example: '0'
+        is_use:
+          description: 是否是使用场景：0-不是，1-是
+          type: integer
+          example: '1'
+        status:
+          description: 启用状态：0-全部，1-启用，2-禁用
+          type: integer
+          example: '0'
+        orderby:
+          description: '排序：[''create_time'' => ''desc'']'
+          type: object
+          example:
+            update_time: desc
+        page:
+          description: 当前页
+          type: integer
+          example: '0'
+        page_size:
+          description: 分页量
+          type: integer
+          example: '10'
+      type: object
+    config_express_getlistresponse:
+      properties:
+        list:
+          description: 配送商列表
+          type: array
+          items:
+            $ref: '#/components/schemas/config_express_item'
+      type: object
+    config_express_inforequest:
+      required:
+        - site_id
+        - express_company_no
+      properties:
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 配送商编号
+          type: string
+      type: object
+    config_express_inforesponse:
+      $ref: '#/components/schemas/config_express_item'
+    config_express_item:
+      properties:
+        id:
+          description: 配送商id
+          type: integer
+        type:
+          description: 类型：0-系统默认，1-自定义
+          type: integer
+        site_id:
+          description: 站点id
+          type: integer
+        express_company_no:
+          description: 快递公司编号
+          type: string
+        company_name:
+          description: 快递公司名称
+          type: string
+          example: '0'
+        company_url:
+          description: 快递公司url
+          type: string
+          example: '0'
+        phone:
+          description: 联系电话
+          type: string
+          default: '0'
+        status:
+          description: 启用状态：0-禁用，1-启用
+          type: integer
+          default: '0'
+        rank:
+          description: 权重排序
+          type: integer
+          default: '999'
+      type: object
+    user_userupgrade_upgradeImportList_request:
+      properties:
+        customer_number:
+          description: 用户资格证号
+          type: string
+          example: '4332423'
+      type: object
+    order_orderreport_orderReportAchievement_respoons:
+      properties:
+        id:
+          description: id
+          type: integer
+          example: '1'
+        city_id:
+          description: 城市ID
+          type: integer
+          example: '22'
+        city_name:
+          description: 业绩归属城市名称
+          type: string
+          example: 上海
+        aims:
+          description: 目标
+          type: string
+          example: '22.00'
+        ordermonth:
+          description: 订单月
+          type: string
+          example: '201908'
+      type: object
+    apiparam:
+      properties:
+        token:
+          type: string
+        device_type:
+          description: 设备类型
+          type: string
+          enum:
+            - ios
+            - andriod
+            - h5
+            - mp
+        device_no:
+          description: 设备号
+          type: string
+        app_version:
+          description: app的版本号
+          type: string
+      type: object
+    apiprotocol:
+      required:
+        - code
+        - msg
+        - data
+      properties:
+        code:
+          type: integer
+          format: int32
+        msg:
+          type: string
+        data:
+          type: object
+      type: object
+    apidataresult:
+      required:
+        - result
+      properties:
+        result:
+          type: integer
+          format: int32
+          enum:
+            - '0:失败'
+            - '1:成功'
+      type: object
+    request_common_page_param:
+      required:
+        - page
+        - page_size
+      properties:
+        page:
+          description: 页码默认第一页
+          type: integle
+          default: ''
+          example: '1'
+        page_size:
+          description: '每页条数默认10条,最大100条'
+          type: integle
+          default: ''
+          example: '10'
+      type: object
+    apidatalist:
+      title: 返回列表
+      required:
+        - list
+        - total
+        - page
+        - page_size
+      properties:
+        list:
+          type: array
+          items:
+            type: object
+        total:
+          description: 总记录数
+          type: integer
+          format: int32
+          example: 18
+        page:
+          description: 当前页码
+          type: integer
+          format: int32
+          example: 1
+        page_size:
+          description: 每页显示记录数
+          type: integer
+          format: int32
+          example: 10
+      type: object
+    request_common_param:
+      required:
+        - token
+      properties:
+        token:
+          description: 用户登录态
+          type: string
+          default: ''
+          example: ''
+      type: object
+tags:
+  -
+    name: dict
+    description: 字典相关接口
+    externalDocs:
+      description: '[更多字典相关信息见pms]'
+      url: 'http://pms.handeson.com/pages/viewpage.action?pageId=5931835'
+  -
+    name: other
+    description: 其他相关接口
+externalDocs:
+  description: 更多项目信息见pms
+  url: 'http://pms.handeson.com/pages/viewpage.action?pageId=4587622'

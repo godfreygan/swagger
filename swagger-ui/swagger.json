@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/index": {
+            "get": {
+                "operationId": "app\\controller\\index::abc",
+                "responses": {
+                    "200": {
+                        "description": "响应200描述"
+                    }
+                }
+            }
+        }
+    }
+}

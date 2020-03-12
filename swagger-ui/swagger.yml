@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: 'API'
+  contact:
+    email: support@example.com
+  version: 1.0.0
+servers:
+  -
+    url: '{schema}://host.dev'
+    description: 'OpenApi parameters'
+    variables:
+      schema:
+        enum:
+          - https
+          - http
+        default: https
+  -
+    url: '{schema}://host.uat'
+    description: 'OpenApi parameters'
+    variables:
+      schema:
+        enum:
+          - https
+          - http
+        default: https
+paths:
