@@ -35,7 +35,13 @@ $scanDir = (isset($swaggerIniData['scandir']) && $swaggerIniData['scandir'])?$sw
 if(!$scanDir) {
     exit('scan dir can not empty' . PHP_EOL);
 }
-$realPath = '/app/'. ucfirst($cloudName) .'/'. ucfirst($moduleName). 'Controllers/';
+
+if($swaggerFileName == 'mobile-api.ini'){
+    $realPath = '/app/'. ucfirst($cloudName) .'/';
+} else {
+    $realPath = '/app/'. ucfirst($cloudName) .'/'. ucfirst($moduleName). 'Controllers/';
+}
+
 $scanDir .= $realPath;
 if(!is_dir($scanDir)) {
     exit($realPath . ' not exists' . PHP_EOL);
