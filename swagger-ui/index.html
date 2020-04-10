@@ -111,7 +111,7 @@
 
     function build() {
       var filename = document.getElementsByClassName('download-url-input')[0].value;
-      var url = '/build.php?f=' + filename;
+      var url = '/buildjson.php?f=' + filename;
       var httpRequest = new XMLHttpRequest();
       httpRequest.open('GET', url, true);
       httpRequest.send();

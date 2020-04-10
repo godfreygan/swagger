@@ -1,5 +1,9 @@
 {
+    "repositories": [
+        {"type":"vcs", "url":"https://github.com/godfreygan/swagger2md.git"}
+    ],
     "require": {
+        "godfreygan/swagger2md":"dev-master",
         "zircote/swagger-php": "^3.0"
     }
 }

@@ -72,7 +72,7 @@ $distFile = (isset($file) && $file)?$file:'swagger.yml';
 $openapi = \OpenApi\scan($scanDir, ['exclude'=>['/app/views', '/app/vendor']]);
 
 //header('Content-Type: application/x-yaml');
-$content = $openapi->toYaml(); //生成yaml内容
+$content = $openapi->toJson(); //生成yaml内容
 //echo $content . PHP_EOL;
 
 $path = dirname($distFile);
